@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -11,7 +10,8 @@ body{
   height:100vh;
   overflow:hidden;
   font-family:'Playfair Display',serif;
-  background:linear-gradient(270deg,#ff6eb4,#ff9ec9,#ffb3d9,#ff69b4,#e75480);
+  /* Couleurs background basées sur les drapeaux */
+  background:linear-gradient(270deg,#2196F3,#1976D2,#0D47A1,#2196F3,#1976D2);
   background-size:600% 600%;
   animation:bg 12s ease infinite;
   display:flex;
@@ -53,7 +53,7 @@ max-width:95vw;
 width:0;
 }
 .title-line.typing{
-animation:goldShine 3s linear infinite, typing var(–dur) steps(var(–steps),end) var(–delay) forwards;
+animation:goldShine 3s linear infinite, typing var(--dur) steps(var(--steps),end) var(--delay) forwards;
 }
 .title-line.done{
 width:auto !important;
@@ -65,7 +65,7 @@ to{background-position:300% center}
 }
 @keyframes typing{
 from{width:0}
-to{width:var(–full-w)}
+to{width:var(--full-w)}
 }
 
 /* curseur clignotant */
@@ -146,7 +146,8 @@ box-shadow:inset -2px 0 4px rgba(0,0,0,0.3);
 /* NAPPAGE */
 .icing-top{
 width:185px;height:14px;
-background:linear-gradient(180deg,#fff8fa,#ffe0ec);
+/* Nappage blanc/bleu très clair */
+background:linear-gradient(180deg,#fff,#E0F7FA);
 border-radius:30px 30px 0 0;
 position:relative;
 box-shadow:0 0 18px rgba(255,255,255,0.5);
@@ -155,35 +156,35 @@ margin-top:2px;
 }
 .drip{
 position:absolute;
-background:#fff0f5;
+background:#E0F7FA;
 border-radius:0 0 10px 10px;
 bottom:-14px;
 }
 
-/* COUCHES */
+/* COUCHES (Maintenant en thème Football Bleu) */
 .tier{display:flex;flex-direction:column;align-items:center}
 .tier-top{height:10px;border-radius:4px 4px 0 0;position:relative;z-index:2}
 .tier-front{border-radius:4px 4px 6px 6px;position:relative}
 .tier-front::after{
-content:””;position:absolute;right:0;top:0;
+content:"";position:absolute;right:0;top:0;
 width:20px;height:100%;
 background:rgba(0,0,0,0.15);
 border-radius:0 4px 6px 0;
 }
 
-.tier3 .tier-top  {width:175px;background:linear-gradient(90deg,#ffcce0,#ffb3cc)}
+.tier3 .tier-top  {width:175px;background:linear-gradient(90deg,#90CAF9,#64B5F6)}
 .tier3 .tier-front{width:175px;height:36px;
-background:linear-gradient(180deg,#ffc2d1 0%,#ff8fab 60%,#ff6f91 100%);
+background:linear-gradient(180deg,#64B5F6 0%,#42A5F5 60%,#2196F3 100%);
 box-shadow:0 4px 10px rgba(0,0,0,0.25),inset 0 2px 4px rgba(255,255,255,0.25)}
 
-.tier2 .tier-top  {width:220px;background:linear-gradient(90deg,#ff9ab8,#ff6080)}
+.tier2 .tier-top  {width:220px;background:linear-gradient(90deg,#42A5F5,#1E88E5)}
 .tier2 .tier-front{width:220px;height:40px;
-background:linear-gradient(180deg,#ff8fab 0%,#ff5070 60%,#e0204a 100%);
+background:linear-gradient(180deg,#42A5F5 0%,#2196F3 60%,#1976D2 100%);
 box-shadow:0 4px 12px rgba(0,0,0,0.3),inset 0 2px 4px rgba(255,255,255,0.2)}
 
-.tier1 .tier-top  {width:265px;background:linear-gradient(90deg,#ff5070,#d00030)}
+.tier1 .tier-top  {width:265px;background:linear-gradient(90deg,#2196F3,#1565C0)}
 .tier1 .tier-front{width:265px;height:48px;
-background:linear-gradient(180deg,#ff6070 0%,#e02040 60%,#b00020 100%);
+background:linear-gradient(180deg,#1E88E5 0%,#1976D2 60%,#0D47A1 100%);
 box-shadow:0 6px 16px rgba(0,0,0,0.4),inset 0 2px 4px rgba(255,255,255,0.15)}
 
 /* PLATEAU */
@@ -223,7 +224,7 @@ background:linear-gradient(135deg,#ffd700,#b8860b);
 border:none;
 border-radius:50px;
 padding:16px 40px;
-font-family:‘Playfair Display’,serif;
+font-family:'Playfair Display',serif;
 font-size:18px;
 color:#3d0020;
 cursor:pointer;
@@ -233,11 +234,11 @@ transition:transform 0.2s, box-shadow 0.2s;
 }
 #btnLaunch:active{transform:translateX(-50%) scale(0.95);box-shadow:0 2px 10px rgba(0,0,0,0.3)}
 
-/* OVERLAY écran rose vide */
+/* OVERLAY démarrage */
 #startOverlay{
 position:fixed;
 inset:0;
-background:linear-gradient(270deg,#ff6eb4,#ff9ec9,#ffb3d9,#ff69b4,#e75480);
+background:linear-gradient(270deg,#2196F3,#1976D2,#0D47A1,#2196F3,#1976D2);
 background-size:600% 600%;
 animation:bg 12s ease infinite;
 z-index:8888;
@@ -245,40 +246,56 @@ z-index:8888;
 .confetti{position:fixed;top:-15px;animation:fall linear infinite;border-radius:2px}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 
-/* COEURS */
-.heart{position:fixed;pointer-events:none;animation:floatUp linear forwards}
-@keyframes floatUp{from{transform:translateY(100vh);opacity:1}to{transform:translateY(-10vh);opacity:0}}
+/* ===== BALLONS DE FOOT QUI TOMBENT ===== */
+.falling-ball{
+  position:fixed;
+  top:-60px;
+  pointer-events:none;
+  z-index:100;
+  width:40px;
+  height:40px;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,0.45));
+  animation:ballFall linear forwards;
+}
+@keyframes ballFall{
+0%{
+  transform:translateY(0) translateX(0) rotate(0deg);
+  opacity:1;
+}
+50%{
+  transform:translateY(55vh) translateX(var(--drift)) rotate(360deg);
+}
+100%{
+  transform:translateY(115vh) translateX(0) rotate(720deg);
+  opacity:0.9;
+}
+}
 
 /* FEUX D’ARTIFICE */
 .spark{position:fixed;width:5px;height:5px;border-radius:50%;pointer-events:none;animation:sparkFly linear forwards}
 @keyframes sparkFly{
 0%  {transform:translate(0,0) scale(1);opacity:1}
-100%{transform:translate(var(–tx),var(–ty)) scale(0);opacity:0}
+100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}
 }
 </style>
 
 </head>
 <body>
 
-<!-- OVERLAY démarrage : écran rose vide -->
-
 <div id="startOverlay"></div>
 
-<!-- BOUTON LANCER (mobile) -->
-
 <button id="btnLaunch">🎂 Lancer !</button>
-
-<!-- TITRE -->
 
 <div class="title-wrap">
   <span class="title-line" id="line1">Happy Birthday</span>
   <span style="display:flex;align-items:center">
-    <span class="title-line" id="line2">Joyeux anniversaire</span>
+    <span class="title-line" id="line2">Jules Laurene </span>
     <span class="cursor" id="cursor"></span>
   </span>
 </div>
-
-<!-- GATEAU -->
 
 <div class="cake">
   <div class="cake-part" id="part-candles">
@@ -310,10 +327,10 @@ z-index:8888;
   </div>
 </div>
 
-<div class="subtitle" id="subtitle">🎂 44 ans 🎂</div>
+<div class="subtitle" id="subtitle">⚽ 12 ans ⚽</div>
 
 <script>
-/* ===== BOUGIES ===== */
+/* ===== BOUGIES - Réduit à 12 ===== */
 const candleColors = [
   'linear-gradient(180deg,#ff4444,#aa0000)',
   'linear-gradient(180deg,#ffdd33,#cc8800)',
@@ -325,7 +342,8 @@ const candleColors = [
   'linear-gradient(180deg,#55ccff,#0055aa)',
 ];
 const row = document.getElementById('candlesRow');
-for(let i = 0; i < 16; i++){
+/* MODIFIÉ: Boucles 12 fois */
+for(let i = 0; i < 12; i++){
   const delay = (Math.random() * 0.5).toFixed(2);
   const dur   = (0.35 + Math.random() * 0.35).toFixed(2);
   const unit  = document.createElement('div');
@@ -364,7 +382,8 @@ const line2El  = document.getElementById('line2');
 const cursorEl = document.getElementById('cursor');
 
 const text1 = 'Joyeux anniversaire';
-const text2 = 'Tati Laurene ';
+/* TEXTE CORRIGÉ: Jules */
+const text2 = 'Jules Laurene ';
 
 const w1 = measureText(line1El, text1);
 const w2 = measureText(line2El, text2);
@@ -450,18 +469,30 @@ for(var i = 0; i < 110; i++){
   document.body.appendChild(el);
 }
 
-/* ===== COEURS ===== */
+/* ===== BALLONS DE FOOT QUI TOMBENT ===== */
+/* Vraies images de ballon (domaine public / Wikimedia Commons), via
+   Special:FilePath qui pointe toujours vers le fichier final hébergé sur
+   upload.wikimedia.org — fiable pour l'intégration, contrairement à un
+   lien de miniature Google Images/Shopping qui expire. */
+var ballSVGs = [
+  'url("https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball.svg")',
+  'url("https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball_shade_gold.svg")',
+  'url("https://commons.wikimedia.org/wiki/Special:FilePath/Soccerball_shade_silver.svg")',
+];
+
 setInterval(function(){
-  var h = document.createElement('div');
-  h.className   = 'heart';
-  h.textContent = '🎵';
-  h.style.left  = Math.random() * 100 + 'vw';
-  h.style.fontSize = (14 + Math.random() * 20) + 'px';
-  h.style.color = 'hsl(' + (320 + Math.random()*60) + ',100%,75%)';
-  h.style.animationDuration = (5 + Math.random() * 3) + 's';
-  document.body.appendChild(h);
-  setTimeout(function(){ h.remove(); }, 8000);
-}, 700);
+  var b = document.createElement('div');
+  b.className = 'falling-ball';
+  b.style.backgroundImage = ballSVGs[Math.floor(Math.random() * ballSVGs.length)];
+  b.style.left = Math.random() * 100 + 'vw';
+  var size = (28 + Math.random() * 24);
+  b.style.width  = size + 'px';
+  b.style.height = size + 'px';
+  b.style.setProperty('--drift', (Math.random() * 60 - 30) + 'px');
+  b.style.animationDuration = (3.5 + Math.random() * 2.5) + 's';
+  document.body.appendChild(b);
+  setTimeout(function(){ b.remove(); }, 6500);
+}, 450);
 
 /* ===== FEUX D'ARTIFICE ===== */
 function burst(x, y){
